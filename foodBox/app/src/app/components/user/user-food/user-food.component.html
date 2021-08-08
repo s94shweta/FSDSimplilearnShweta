@@ -1,0 +1,29 @@
+<div class="card mt-3">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-5">
+                <img class="card-img-top" [src]="getFoodImageUrl(food?.id)" alt="{{ food?.name }}" width="364"
+                    height="364">
+            </div>
+            <div class="col-md-7">
+                <div class="d-flex justify-content-between">
+                    <h5 class="title">{{ food?.name }}</h5>
+                    <h5 class="text-right">$ {{ food?.price | number : '1.2-2' }}</h5>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p class="text-muted">{{ getCategoryName(food?.categoryId) }} Cuisine</p>
+                    <p class="text-right small text-red" *ngIf="hasDiscount(food?.offerId)">{{
+                        getOfferDesc(food?.offerId) }}</p>
+                </div>
+                <p>{{ food?.desc }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <form>
+            <div class="row justify-content-end mx-1">
+                <button mdbBtn color="warning" class="btn" type="submit" (click)="onAddToCart()">Add to Cart</button>
+            </div>
+        </form>
+    </div>
+</div>
